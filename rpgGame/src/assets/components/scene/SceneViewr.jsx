@@ -46,8 +46,8 @@ function SceneViewr() {
 const ground = MeshBuilder.CreateGround(
   "largeTerrain",
   {
-    width: 200,
-    height: 200,
+    width: 2000,
+    height: 2000,
     subdivisions: 100,
   },
   scene
@@ -61,6 +61,9 @@ terrainMaterial.diffuseTexture = new Texture(
 );
 
 ground.material = terrainMaterial;
+
+terrainMaterial.diffuseTexture.uScale = 20;
+terrainMaterial.diffuseTexture.vScale = 20;
     const npc = MeshBuilder.CreateBox(
       "Village Elder",
       { size: 1 },
