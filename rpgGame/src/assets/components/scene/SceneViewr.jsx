@@ -7,8 +7,9 @@ import {
   Vector3,
   MeshBuilder,
   StandardMaterial,
-  Color3,
+  Texture
 } from "@babylonjs/core";
+import sandTexture from "../../Textures/textures/coast_sand_rocks_02_diff_4k.jpg";
 
 import "./SceneViewer.css";
 
@@ -42,7 +43,24 @@ function SceneViewr() {
     // const groundMat = new StandardMaterial("groundMat", scene);
     // groundMat.diffuseColor = new Color3(0.2, 0.5, 0.2);
     // ground.material = groundMat;
+const ground = MeshBuilder.CreateGround(
+  "largeTerrain",
+  {
+    width: 200,
+    height: 200,
+    subdivisions: 100,
+  },
+  scene
+);
 
+const terrainMaterial = new StandardMaterial("terrainMaterial", scene);
+
+terrainMaterial.diffuseTexture = new Texture(
+  sandTexture,
+  scene
+);
+
+ground.material = terrainMaterial;
     const npc = MeshBuilder.CreateBox(
       "Village Elder",
       { size: 1 },
